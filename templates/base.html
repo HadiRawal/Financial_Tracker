@@ -14,8 +14,8 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'css/dashboard.css' %}" rel="stylesheet" />
   </head>
-  <body>
-    <nav class="navbar navbar-dark fixed-top bg-info flex-md-nowrap p-0 shadow">
+  <body style="background-color: #969db3" >
+    <nav class="navbar navbar-dark fixed-top  flex-md-nowrap p-0 shadow" style="background-color:#262c40">
         <div class="navbar-brand m-1 p-0 ">
           <div class="navbar-brand m-1 p-0">
             <a class="navbar-brand p-1 m-1 mr-0 font-weight-bold " href="#"> Expensyana</a>
@@ -45,14 +45,15 @@
     </nav>
 
     <div class="container-fluid">
-      <div class="row">
+      <div class="row ">
         {% include 'partials/_sidebar.html' %}
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 ">
           {% block content %} {% endblock %}
         </main>
       </div>
     </div>
+
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
