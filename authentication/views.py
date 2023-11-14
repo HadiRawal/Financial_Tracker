@@ -54,16 +54,16 @@ class RegistrationView(View):
         email = request.POST['email']
         password = request.POST['password']
 
-        context = {
+        context = {  #keep values in field after error
             'fieldValues': request.POST
         }
 
-        if not User.objects.filter(username=username).exists():
-            if not User.objects.filter(email=email).exists():
-                if len(password) < 6:
-                    messages.error(request, 'Password too short')
-                    return render(request, 'authentication/register.html', context)
-
+        if not User.objects.filter(username=username).exists():#check user existance 
+            if not User.objects.filter(email=email).exists():#check email existance 
+                if len(password) < 6: #check password length 
+                    messages.error(request, 'Password too short') #send error msg
+                    return render(request, 'authentication/register.html', context) #reaction
+                #if all good, proceed
                 user = User.objects.create_user(username=username, email=email)
                 user.set_password(password)
                 user.is_active = False
@@ -76,8 +76,7 @@ class RegistrationView(View):
                     'token': account_activation_token.make_token(user),
                 }
 
-                link = reverse('activate', kwargs={
-                               'uidb64': email_body['uid'], 'token': email_body['token']})
+                link = reverse('activate', kwargs={'uidb64': email_body['uid'], 'token': email_body['token']})
 
                 email_subject = 'Activate your account'
 

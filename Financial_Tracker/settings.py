@@ -13,6 +13,11 @@ from django.contrib import messages
 from pathlib import Path
 import os
 import django_heroku
+import environ
+
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,3 +139,11 @@ django_heroku.settings(locals())
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+# email stuff
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'expensyana@gmail.com'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'expensyana@gmail.com'
+EMAIL_PORT = 535
+EMAIL_HOST_PASSWORD = 'Expensyana$23'
